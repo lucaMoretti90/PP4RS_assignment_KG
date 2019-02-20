@@ -32,6 +32,7 @@ opt = parse_args(opt_parser);
 if (is.null(opt$data)){
  print_help(opt_parser)
  stop("Input data must be provided", call. = FALSE)
+}
 
 # Load data
 print("Loading data")

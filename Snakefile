@@ -11,12 +11,12 @@ configfile: "config.yaml"
 LOG_ALL = "2>&1"
 
 # --- Build rules ---#
-#
-# rule all:
-#      input:
-#        figures = expand(config["out_figures"] + "plot.pdf",
-#        tab01 = config["out_tables"] + "plot.tex"
-#
+
+rule all:
+     input:
+        graph = config["out_graphs"] + "graph.pdf",
+        tab01 = config["out_tables"] + "tab01.tex"
+
 rule plot:
      input:
        script = config["src_graphs"] + "graph.R",
@@ -59,3 +59,7 @@ rule merge:
       --data_seasons {input.data_seasons}  \
       --data_players {input.data_players}  \
       --out {output.data} > {log} {LOG_ALL}"
+
+rule clean:
+    shell:
+      "rm -rf.out/*"
