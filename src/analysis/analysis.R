@@ -4,12 +4,14 @@
 rm(list=ls())
 
 #Load library
+
+library(readr)
+library(dplyr)
 library(optparse)
 library(ggplot2)
 library(rlist)
-#install.packages("stargazer")
 library(stargazer)
-library(optparse)
+#install.packages("stargazer")
 
 option_list = list(
    make_option(c("-d", "--data"),
@@ -22,7 +24,7 @@ option_list = list(
                 default = "out.rds",
                 help = "output file name [default = %default]",
                 metavar = "character"),
-	make_option(c("-o", "--out2"),
+	make_option(c("-e", "--out2"),
                 type = "character",
                 default = "out.tex",
                 help = "output file name [default = %default]",
@@ -35,10 +37,6 @@ opt = parse_args(opt_parser);
 if (is.null(opt$data)){
  print_help(opt_parser)
  stop("Input data must be provided", call. = FALSE)
-}
-if (is.null(opt$filepath)){
- print_help(opt_parser)
- stop("Input filepath must be provided", call. = FALSE)
 }
 
 # Load data
@@ -63,5 +61,5 @@ list.save(ols, opt$out)
 table<-stargazer(ols, title="Correlates of fouls", label="foulreg",
           covariate.labels=c("Height", "Weight", "Age", "2-point", "3-point",
                              "Rebounds", "Assists", "Steals", "Points"),
-                             column.labels = c("OLS")),
+                             column.labels = c("OLS"),
                              out = opt$out2)

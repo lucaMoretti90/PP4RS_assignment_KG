@@ -5,7 +5,8 @@ rm(list=ls())
 
 #Libraries
 library(optparse)
-library(rjson)
+library(haven)
+library(readr)
 library(dplyr)
 
 # CLI parsing
@@ -15,7 +16,7 @@ option_list = list(
                default = NULL,
                help = "a csv file name",
                metavar = "character"),
- make_option(c("-d", "--data_seasons"),
+ make_option(c("-e", "--data_seasons"),
                type = "character",
                default = NULL,
                help = "a csv file name",
@@ -27,7 +28,7 @@ option_list = list(
                metavar = "character")
 );
 
-opt_parser = OptionParser(option_list = option_list);
+opt_parser = OptionParser(option_list = option_list, add_help_option=FALSE);
 opt = parse_args(opt_parser);
 
 if (is.null(opt$data_players)){
@@ -43,11 +44,12 @@ if (is.null(opt$data_seasons)){
 print("Loading data")
 #player_data<-read.csv("../data/player_data.csv")
 players<-read.csv(opt$data_players)
+#players <- rename(players, Player = name)
 season_stats<-read.csv(opt$data_seasons)
 #season_stats<-read.csv("../src/data/Seasons_Stats.csv")
 
 #Merge datasets
-data_merged<-left_join(season_stats,players,by="Player")
+data_merged<-left_join(season_stats,players, by="Player")
 
 #Save the datset
 write_csv(data_merged, opt$out)

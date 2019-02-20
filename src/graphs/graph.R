@@ -1,8 +1,16 @@
+#This R code creates a plot
+
+#Load library
+library(readr)
 library(optparse)
 library(rjson)
 library(readr)
 library(ggplot2)
 library(magrittr)
+library(dplyr)
+library(rlist)
+library(stargazer)
+
 
 # CLI parsing
 option_list = list(
@@ -27,10 +35,9 @@ if (is.null(opt$data)){
 
 # Load data
 print("Loading data")
-df <- read_csv(opt$data)
 data_analysis<-read_csv(opt$data)
 
-plot1<-data_analysis  %>%
+graph <- data_analysis  %>%
   group_by(Year) %>%
   summarise(mean_PF = mean(PF, na.rm = TRUE)) %>%
   ggplot() +
@@ -41,4 +48,4 @@ plot1<-data_analysis  %>%
        y = "Mean of number of fouls")
 
 #title = "Number of personal fauls over time"
-ggsave(opt$out,plot)
+ggsave(opt$out, graph)

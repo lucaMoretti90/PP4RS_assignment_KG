@@ -1,0 +1,26 @@
+Warning message:
+package ‘readr’ was built under R version 3.2.5 
+Warning message:
+In .doLoadActions(where, attach) :
+  trying to execute load actions without 'methods' package
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Warning message:
+package ‘rlist’ was built under R version 3.2.4 
+
+Please cite as: 
+
+ Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+ R package version 5.2.2. https://CRAN.R-project.org/package=stargazer 
+
+Errore: unexpected end of input
+Esecuzione interrotta
