@@ -1,0 +1,7 @@
+dplyr
+ggplot2
+magrittr
+rjson
+stargazer
+outparse
+rlist
