@@ -43,7 +43,6 @@ if (is.null(opt$data)){
 print("Loading data")
 data_analysis <- read_csv(opt$data)
 
-#plot
 names(data_analysis)
 #List
 #PF - personal fouls, G - Games, MP- Minutes played, 2P- two pointers 3P - 3 pointers
@@ -51,15 +50,19 @@ names(data_analysis)
 #BLK-blocks per game, TOV - turnovers per game, PTS - points per game
 
 #Running Regression
-ols<-lm(PF~height+weight+Age+X2P+X3P+TRB+AST+STL+PTS,data=data_analysis)
+#with all co-variates
+ols<-lm(PF_M~ G+GS+PER+X3P.+X2P.+FTr+TRB.+AST.+
+          STL.+BLK.+TOV.+FG.+FT.+height+weight+Age,data=data_analysis)
 summary(ols)
+#with lag dependent variable only
+ols_per<-lm(PF_M~PF_M_lag,data=data_analysis)
 
-# Save output
+# Save regression output 
 list.save(ols, opt$out)
 
-#Create table
-table<-stargazer(ols, title="Correlates of fouls", label="foulreg",
+#Create table of regressions and save it 
+table<-stargazer(ols,ols_per, title="Correlates of fouls", label="foulreg",
           covariate.labels=c("Height", "Weight", "Age", "2-point", "3-point",
                              "Rebounds", "Assists", "Steals", "Points"),
-                             column.labels = c("OLS"),
-                             out = opt$out2)
+                             column.labels = c("OLS","OLS"),
+                            out = opt$out2)
