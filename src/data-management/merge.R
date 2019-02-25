@@ -51,12 +51,13 @@ season_stats<-read.csv(opt$data_seasons)
 #Merge datasets
 data_merged<-left_join(season_stats,players, by="Player")
 
-#Create new variables 
+#Create new variables
 data_merged$PF_min<-100*data_merged$PF/data_merged$MP
 data_merged$PF_M<-round(data_merged$PF_min,1)
 data_merged$PF_M[is.finite(data_merged$PF_M)==F]<-NA
 data_merged$PF_G<-data_merged$PF/data_merged$G
-data_merged$PF_M_lag<-lag(data_merged$PF_M,1) 
+data_merged$PF_M_lag<-lag(data_merged$PF_M,1)
+data_merged$d_2017<-(data_merged$Year == 2017)
 
 #Save the datset
 write_csv(data_merged, opt$out)

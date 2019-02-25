@@ -1,5 +1,3 @@
-Warning message:
-package ‘readr’ was built under R version 3.2.5 
 
 Attaching package: ‘dplyr’
 
@@ -11,9 +9,6 @@ The following objects are masked from ‘package:base’:
 
     intersect, setdiff, setequal, union
 
-Warning message:
-In .doLoadActions(where, attach) :
-  trying to execute load actions without 'methods' package
 [1] "Loading data"
 Warning message:
 Column `Player` joining factors with different levels, coercing to character vector 
