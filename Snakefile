@@ -12,10 +12,23 @@ LOG_ALL = "2>&1"
 
 # --- Build rules ---#
 
-rule all:
-     input:
-        graph = config["out_graphs"] + "graph.pdf",
-        tab01 = config["out_tables"] + "tab01.tex"
+#
+# rule all:
+#      input:
+#         graph_pdf = config["out_graphs"] + "graph.pdf",
+#         tab01_tex = config["out_tables"] + "tab01.tex"
+
+# rule install_packages:
+#     input:
+#         script = "install_r_packages.R",
+#         requirements = "REQUIREMENTS.txt"
+#     shell:
+#         "Rscript {input.script}"
+# rule find_packages:
+#     output:
+#         "REQUIREMENTS.txt"
+#     shell:
+#         "bash find_r_packages.sh"
 
 rule plot:
      input:
@@ -59,6 +72,45 @@ rule merge:
       --data_seasons {input.data_seasons}  \
       --data_players {input.data_players}  \
       --out {output.data} > {log} {LOG_ALL}"
+
+#  #--- Packrat Rules --- #
+#
+# ## packrat_install: installs packrat onto machine
+# rule packrat_install:
+#     input:
+#         script = config["src_lib"] + "install_packrat.R"
+#     log:
+#         config["log"] + "packrat/install_packrat.Rout"
+#     shell:
+#         "Rscript {input.script} > {log} 2>&1"
+#
+#
+# ## packrat_init: initialize a packrat environment for this project
+# rule packrat_init:
+#     input:
+#         script = config["src_lib"] + "init_packrat.R"
+#     log:
+#         config["log"] + "packrat/init_packrat.Rout"
+#     shell:
+#         "Rscript {input.script} > {log} 2>&1"
+#
+# ## packrat_snap   : Look for new R packages in files & archives them
+# rule packrat_snap:
+#     input:
+#         script = config["src_lib"] + "snapshot_packrat.R"
+#     log:
+#         config["log"] + "packrat/snapshot_packrat.Rout"
+#     shell:
+#         "Rscript {input.script} > {log} 2>&1"
+#
+# ## packrat_restore: Installs archived packages onto a new machine
+# rule packrat_restore:
+#     input:
+#         script = config["src_lib"] + "restore_packrat.R"
+#     log:
+#         config["log"] + "packrat/restore_packrat.Rout"
+#     shell:
+#         "Rscript {input.script} > {log} 2>&1"
 
 rule clean:
     shell:

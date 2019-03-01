@@ -3,5 +3,5 @@ ggplot2
 magrittr
 rjson
 stargazer
-outparse
+optparse
 rlist
