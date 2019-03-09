@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	merge
+	1	plot
+	2
+
+[Mon Feb 25 14:44:09 2019]
+rule merge:
+    input: src/data-management/merge.R, src/data/Players.csv, src/data/Seasons_Stats.csv
+    output: out/data/data_merged.csv
+    log: logs/merge.Rout
+    jobid: 1
+
+[Mon Feb 25 14:44:10 2019]
+Error in rule merge:
+    jobid: 1
+    output: out/data/data_merged.csv
+    log: logs/merge.Rout
+
+RuleException:
+CalledProcessError in line 63 of C:\Users\ksrinivasan\OneDrive\Zurich\Courses\others\programming_winter\PP4RS_assignment_KG\Snakefile:
+Command 'Rscript src/data-management/merge.R       --data_seasons src/data/Seasons_Stats.csv        --data_players src/data/Players.csv        --out out/data/data_merged.csv > logs/merge.Rout 2>&1' returned non-zero exit status 1.
+  File "C:\Users\ksrinivasan\OneDrive\Zurich\Courses\others\programming_winter\PP4RS_assignment_KG\Snakefile", line 63, in __rule_merge
+  File "c:\users\ksrinivasan\appdata\local\continuum\anaconda3\lib\concurrent\futures\thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: C:\Users\ksrinivasan\OneDrive\Zurich\Courses\others\programming_winter\PP4RS_assignment_KG\.snakemake\log\2019-02-25T144409.024399.snakemake.log

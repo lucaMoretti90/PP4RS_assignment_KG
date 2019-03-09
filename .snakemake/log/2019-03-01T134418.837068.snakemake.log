@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	plot
+	1
+
+[Fri Mar  1 13:44:21 2019]
+rule plot:
+    input: src/graphs/graph.R, out/data/data_merged.csv
+    output: out\graphs\graph.pdf, out\graphs\graph_dec.png
+    log: logs/plot.Rout
+    jobid: 0
+
+[Fri Mar  1 13:44:21 2019]
+Error in rule plot:
+    jobid: 0
+    output: out\graphs\graph.pdf, out\graphs\graph_dec.png
+    log: logs/plot.Rout
+
+RuleException:
+CalledProcessError in line 32 of C:\Users\ksrini\OneDrive\Zurich\Courses\others\Programming_winter\PP4RS_assignment_KG\Snakefile:
+Command 'Rscript src/graphs/graph.R        --data out/data/data_merged.csv        --out out\graphs\graph.pdf > logs/plot.Rout 2>&1        --out2 out\graphs\graph_dec.png > logs/plot.Rout 2>&1' returned non-zero exit status 1.
+  File "C:\Users\ksrini\OneDrive\Zurich\Courses\others\Programming_winter\PP4RS_assignment_KG\Snakefile", line 32, in __rule_plot
+  File "c:\users\ksrini\appdata\local\continuum\miniconda3\lib\concurrent\futures\thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: C:\Users\ksrini\OneDrive\Zurich\Courses\others\Programming_winter\PP4RS_assignment_KG\.snakemake\log\2019-03-01T134418.837068.snakemake.log

@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	analysis
+	1
+
+[Sat Mar  9 16:19:21 2019]
+rule analysis:
+    input: src/analysis/analysis.R, out/data/data_merged.csv
+    output: out\tables\tab01.html
+    log: logs/estimates.Rout
+    jobid: 0
+
+[Sat Mar  9 16:19:23 2019]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: C:\Users\ksrini\OneDrive\Zurich\Courses\others\Programming_winter\PP4RS_assignment_KG\.snakemake\log\2019-03-09T161921.535386.snakemake.log

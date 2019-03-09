@@ -168,12 +168,7 @@ $(document).ready(function () {
 
 
 
-<div class="fluid-row" id="header">
-
-
-
-
-</div>
+<div class="fluid-row" id="header"> </div>
 
 
 <div id="pp4rs---assignment" class="section level3">
@@ -198,12 +193,12 @@ $(document).ready(function () {
    because humans have evolved over time or simply because referees don’t
    call as many fouls as before. A detailed discussion is beyond the scope of
    this report.</p>
-<p>We then find the correlates of fouls using regression analysis. The
+<!-- <p>We then find the correlates of fouls using regression analysis. The
   dependent in specification (1) is the average fouls per 100 minutes
    played for each individual. We include the following explanatory variables:
    <ul>
       <li> Height: Height if an player </li>
-      <li> Weight: Weight of a player </li> 
+      <li> Weight: Weight of a player </li>
       <li> Age: Age of a player </li>
       <li> G - Games </li>
       <li> GS - Games started </li>
@@ -216,21 +211,23 @@ $(document).ready(function () {
       <li> AST. - Assist Percentage </li>
       <li> STL. - Steal Percentage </li>
       <li> BLK. - Block Percentage </li>
-      <li> TOV. - Turnover Percentage
-      </li>
-       <li> FG. - Field goal percentage</p>
-<p>In specification (2) the only explanatory variable we include is the lag
+      <li> TOV. - Turnover Percentage </li>
+       <li> FG. - Field goal percentage</li> -->
+
+We now look at the effect of fouls on future fouls using regressions
+analysis. The link to the table can be found
+<a href="../tables/tab01.html" target="_blank">here</a>.
+
+<p>In specification (1) the only explanatory variable we include is the lag
   of fouls for the previous year. We see the effect of this variable is
   positive indicating that a person who fouls in a year is more likely to
   foul in subsequent years. However, this may be a spurious state dependence
    indicating simply that some players are likely to foul and that it is their
     inherent characteristics that make them foul more in the future periods.</p>
-
 </div>
 
-<div w3-include-html="content.html"></div>
 
-<script>
+<!-- <script>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
@@ -244,14 +241,14 @@ $(document).ready(function () {
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
+<!-- <script> -->
+  <!-- (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
+</script> --> 
 
 </body>
 </html>

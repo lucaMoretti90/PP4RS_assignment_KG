@@ -5,14 +5,17 @@
 
 ## Documentation
 
-The R Markdown of our analysis can be found in the folder `/out/paper`
+The html file of our analysis can be found in the folder `/out/paper/assignment.html`
+
 
 ## How to Run
 
 1. Open a terminal and navigate to this directory (Window users should use PowerShell)
 2. Check which packages the R script will use by running `sh find_r_packages.sh`
+    This saves the necessary packages to REQUIREMENTS.txt
 3. Install all the necessary R packages by running `Rscript install_r_packages.R`
 4. Run `snakemake all`
+5. Packrat rule have been commented out.
 
 ## Install instructions
 
@@ -39,6 +42,7 @@ You can install snakemake as follows:
     * If you haven't got Python installed click [here](https://pp4rs.github.io/installation-guide/python/) for instructions
 
 ### Archiving our `R` packages
+Note: We do not implement this in our assignment, but is for your reference!
 
 To ensure that the same output is returned whenever our code is run we
 want to ensure that the same `R` packages are used, and that the save *version* of the package is used. `Packrat` is a package manager that facilitates this task for us.

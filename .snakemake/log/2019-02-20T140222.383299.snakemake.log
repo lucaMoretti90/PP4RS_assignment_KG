@@ -1,0 +1,15 @@
+Building DAG of jobs...
+Job counts:
+	count	jobs
+	1	merge
+	1
+
+[Wed Feb 20 14:02:22 2019]
+rule merge:
+    input: src/data-management/merge.R, src/data/player_data.csv, src/data/Seasons_Stats.csv
+    output: out\data\data_merged.csv
+    log: logs/merge.Rout
+    jobid: 0
+
+RuleException in line 48 of C:\Users\ksrinivasan\OneDrive\Zurich\Courses\others\programming_winter\PP4RS_assignment_KG\Snakefile:
+'InputFiles' object has no attribute 'data'

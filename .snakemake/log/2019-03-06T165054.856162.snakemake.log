@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 15 of C:\Users\ksrini\OneDrive\Zurich\Courses\others\Programming_winter\PP4RS_assignment_KG\Snakefile:
+Missing input files for rule all:
+out/tables/tab01.tex
+out/graphs/graph.pdf

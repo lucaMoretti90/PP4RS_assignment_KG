@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	install_packages
+	1
+
+[Fri Mar  1 15:37:46 2019]
+rule install_packages:
+    input: install_r_packages.R, REQUIREMENTS.txt
+    jobid: 0
+
+[Fri Mar  1 15:37:46 2019]
+Error in rule install_packages:
+    jobid: 0
+
+RuleException:
+CalledProcessError in line 26 of C:\Users\ksrini\OneDrive\Zurich\Courses\others\Programming_winter\PP4RS_assignment_KG\Snakefile:
+Command 'Rscript install_r_packages.R' returned non-zero exit status 1.
+  File "C:\Users\ksrini\OneDrive\Zurich\Courses\others\Programming_winter\PP4RS_assignment_KG\Snakefile", line 26, in __rule_install_packages
+  File "c:\users\ksrini\appdata\local\continuum\miniconda3\lib\concurrent\futures\thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: C:\Users\ksrini\OneDrive\Zurich\Courses\others\Programming_winter\PP4RS_assignment_KG\.snakemake\log\2019-03-01T153746.613938.snakemake.log

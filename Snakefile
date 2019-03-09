@@ -15,27 +15,15 @@ LOG_ALL = "2>&1"
 #
 rule all:
       input:
-         graph_pdf = config["out_graphs"] + "graph.pdf",
+         graph_pdf = config["out_graphs"] + "graph.png",
          tab01_tex = config["out_tables"] + "tab01.html"
-
-# rule install_packages:
-#     input:
-#         script = "install_r_packages.R",
-#         requirements = "REQUIREMENTS.txt"
-#     shell:
-#         "Rscript {input.script}"
-# rule find_packages:
-#     output:
-#         "REQUIREMENTS.txt"
-#     shell:
-#         "bash find_r_packages.sh"
 
 rule plot:
      input:
        script = config["src_graphs"] + "graph.R",
        data   = config["out_data"] + "data_merged.csv"
      output:
-       graph = Path(config["out_graphs"] + "graph.pdf")
+       graph = Path(config["out_graphs"] + "graph.png")
      log:
        config["log"] + "plot.Rout"
      shell:

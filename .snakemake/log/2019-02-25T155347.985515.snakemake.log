@@ -1,0 +1,43 @@
+Building DAG of jobs...
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	merge
+	1	plot
+	2
+
+[Mon Feb 25 15:53:48 2019]
+rule merge:
+    input: src/data-management/merge.R, src/data/Players.csv, src/data/Seasons_Stats.csv
+    output: out/data/data_merged.csv
+    log: logs/merge.Rout
+    jobid: 1
+
+[Mon Feb 25 15:53:51 2019]
+Finished job 1.
+1 of 2 steps (50%) done
+
+[Mon Feb 25 15:53:51 2019]
+rule plot:
+    input: src/graphs/graph.R, out/data/data_merged.csv
+    output: out\graphs\graph.pdf, out\graphs\graph_tree.png
+    log: logs/plot.Rout
+    jobid: 0
+
+[Mon Feb 25 15:53:58 2019]
+Error in rule plot:
+    jobid: 0
+    output: out\graphs\graph.pdf, out\graphs\graph_tree.png
+    log: logs/plot.Rout
+
+RuleException:
+CalledProcessError in line 32 of C:\Users\ksrinivasan\OneDrive\Zurich\Courses\others\programming_winter\PP4RS_assignment_KG\Snakefile:
+Command 'Rscript src/graphs/graph.R        --data out/data/data_merged.csv        --out out\graphs\graph.pdf > logs/plot.Rout 2>&1        --out2 out\graphs\graph_tree.png > logs/plot.Rout 2>&1' returned non-zero exit status 1.
+  File "C:\Users\ksrinivasan\OneDrive\Zurich\Courses\others\programming_winter\PP4RS_assignment_KG\Snakefile", line 32, in __rule_plot
+  File "c:\users\ksrinivasan\appdata\local\continuum\anaconda3\lib\concurrent\futures\thread.py", line 57, in run
+Removing output files of failed job plot since they might be corrupted:
+out\graphs\graph.pdf
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: C:\Users\ksrinivasan\OneDrive\Zurich\Courses\others\programming_winter\PP4RS_assignment_KG\.snakemake\log\2019-02-25T155347.985515.snakemake.log

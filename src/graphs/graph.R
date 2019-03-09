@@ -4,15 +4,10 @@
 library(readr)
 library(optparse)
 library(rjson)
-library(readr)
 library(ggplot2)
-library(magrittr)
 library(dplyr)
 library(rlist)
 library(stargazer)
-library(tree)
-library(ggplotify)
-library(randomForest)
 
 # CLI parsing
 option_list = list(

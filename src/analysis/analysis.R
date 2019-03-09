@@ -6,12 +6,9 @@ rm(list=ls())
 #Load library
 
 library(readr)
-library(dplyr)
 library(optparse)
-library(ggplot2)
 library(rlist)
 library(stargazer)
-#install.packages("stargazer")
 
 option_list = list(
    make_option(c("-d", "--data"),
@@ -55,6 +52,6 @@ ols_per<-lm(PF_M~PF_M_lag,data=data_analysis)
 # Save regression output
 
 #Create table of regressions and save it
-table<-stargazer(ols_per, title="Correlates of fouls", label="foulreg",
+table<-stargazer(ols_per,type="html", title="Correlates of fouls", label="foulreg",
                              column.labels = c("OLS"),
                             out = opt$out)
