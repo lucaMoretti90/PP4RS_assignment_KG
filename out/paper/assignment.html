@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title> PP4RS Assignment</title>
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="pp4rs---assignment" class="section level3">
+<h1>PP4RS - Assignment</h1>
+<p>Authors: <span class="citation">@mangianteg</span> <span class="citation">@krishnasini</span></p>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The National Basketball Association is a men’s professional basketball league in North America, composed of 30 teams. We analyze a dataset of NBA players obtained from Kaggle.com (“<a href="https://www.kaggle.com/drgilermo/nba-players-stats#player_data.csv" class="uri">https://www.kaggle.com/drgilermo/nba-players-stats#player_data.csv</a>”) to obtain some interetsing findings.</p>
+<p>In a game, every player is allowed 5 personal fouls per game. These fouls can arrise from various reasons but in general entail harming another player. We analyze the data on fouls to check the determinants of fould and if there is a trend in the average fouls per game over the years.</p>
+<p>From the source, we download two datasets. One is a cross-section dataset containing the player characteristics for 3923 players. The other is a panel data containing player statistics over time. We merge these two datasets to obtain a balanced pane of 24961 observations over 68 years from 1950 through 2017.</p>
+
+<h2> Results</h2>
+<p>We start by plotting the fouls over time.   In particular, we consider
+  as the variable of interest the fouls per 100 minutes player for each player.
+  Thus, in the plot below, on the x-axis is years and on the y-axis is the
+   average fouls per 100 minutes played, for the whole year.</p>
+
+   <img src="../graphs/graph.png" height="200" width="400">
+
+<p>we see that the rate of fouls is declining over time. This could be
+   because humans have evolved over time or simply because referees don’t
+   call as many fouls as before. A detailed discussion is beyond the scope of
+   this report.</p>
+<p>We then find the correlates of fouls using regression analysis. The
+  dependent in specification (1) is the average fouls per 100 minutes
+   played for each individual. We include the following explanatory variables:
+   <ul>
+      <li> Height: Height if an player </li>
+      <li> Weight: Weight of a player </li> 
+      <li> Age: Age of a player </li>
+      <li> G - Games </li>
+      <li> GS - Games started </li>
+      <li> PER - Player </li>
+      <li> Efficiency Rating </li>
+      <li> X3P. - 3-Point Field Goal Percentage </li>
+      <li> X2P. - 2-Point Field Goal Percentage </li>
+      <li> FTr - Free Throw Percentage </li>
+      <li> TRB. - Total Rebound Percentage </li>
+      <li> AST. - Assist Percentage </li>
+      <li> STL. - Steal Percentage </li>
+      <li> BLK. - Block Percentage </li>
+      <li> TOV. - Turnover Percentage
+      </li>
+       <li> FG. - Field goal percentage</p>
+<p>In specification (2) the only explanatory variable we include is the lag
+  of fouls for the previous year. We see the effect of this variable is
+  positive indicating that a person who fouls in a year is more likely to
+  foul in subsequent years. However, this may be a spurious state dependence
+   indicating simply that some players are likely to foul and that it is their
+    inherent characteristics that make them foul more in the future periods.</p>
+
+</div>
+
+<div w3-include-html="content.html"></div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
