@@ -21,11 +21,6 @@ option_list = list(
                metavar = "character"),
 	make_option(c("-o", "--out"),
                 type = "character",
-                default = "out.rds",
-                help = "output file name [default = %default]",
-                metavar = "character"),
-	make_option(c("-e", "--out2"),
-                type = "character",
                 default = "out.tex",
                 help = "output file name [default = %default]",
                 metavar = "character")
@@ -57,12 +52,9 @@ summary(ols)
 #with lag dependent variable only
 ols_per<-lm(PF_M~PF_M_lag,data=data_analysis)
 
-# Save regression output 
-list.save(ols, opt$out)
+# Save regression output
 
-#Create table of regressions and save it 
-table<-stargazer(ols,ols_per, title="Correlates of fouls", label="foulreg",
-          covariate.labels=c("Height", "Weight", "Age", "2-point", "3-point",
-                             "Rebounds", "Assists", "Steals", "Points"),
-                             column.labels = c("OLS","OLS"),
-                            out = opt$out2)
+#Create table of regressions and save it
+table<-stargazer(ols_per, title="Correlates of fouls", label="foulreg",
+                             column.labels = c("OLS"),
+                            out = opt$out)
