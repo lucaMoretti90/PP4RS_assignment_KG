@@ -13,10 +13,10 @@ LOG_ALL = "2>&1"
 # --- Build rules ---#
 
 #
-# rule all:
-#      input:
-#         graph_pdf = config["out_graphs"] + "graph.pdf",
-#         tab01_tex = config["out_tables"] + "tab01.tex"
+rule all:
+      input:
+         graph_pdf = config["out_graphs"] + "graph.pdf",
+         tab01_tex = config["out_tables"] + "tab01.html"
 
 # rule install_packages:
 #     input:
@@ -48,15 +48,13 @@ rule analysis:
        script = config["src_analysis"] + "analysis.R",
        data   = config["out_data"] + "data_merged.csv"
      output:
-       estimates = Path(config["out_analysis"] + "estimates.rds"),
-       tex = Path(config["out_tables"] + "tab01.tex")
+       tex = Path(config["out_tables"] + "tab01.html")
      log:
        config["log"] + "estimates.Rout"
      shell:
        "Rscript {input.script} \
        --data {input.data} \
-       --out {output.estimates} > {log} {LOG_ALL} \
-       --out2 {output.tex} > {log} {LOG_ALL}"
+       --out {output.tex} > {log} {LOG_ALL}"
 
 rule merge:
     input:
