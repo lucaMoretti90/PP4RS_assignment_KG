@@ -5,12 +5,14 @@
 
 ## Documentation
 
-**IN PROGRESS**
+The R Markdown of our analysis can be found in the folder `/out/paper`
 
 ## How to Run
 
-1. Open a terminal and navigate to this directory
-2. run `snakemake all`
+1. Open a terminal and navigate to this directory (Window users should use PowerShell)
+2. Check which packages the R script will use by running `sh find_r_packages.sh`
+3. Install all the necessary R packages by running `Rscript install_r_packages.R`
+4. Run `snakemake all`
 
 ## Install instructions
 
