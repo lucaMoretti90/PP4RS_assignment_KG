@@ -6,7 +6,8 @@
 ## Documentation
 
 The html file of our analysis can be found in the folder `/out/paper/assignment.html`
-
+Note: It may not work properly on some browsers (e.g. safari). It
+shoudl work on Google chrome and Firefox. 
 
 ## How to Run
 
